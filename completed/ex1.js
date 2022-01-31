@@ -16,9 +16,19 @@ let iterator = 10000000;
 
 performance.mark("start");
 
+//%NeverOptimizeFunction(add);
+while (iterator--) {
+  add(a, b);
+}
+
+add("str1", "str2");
+
+iterator = 10000000;
 while (iterator--) {
   add(a, b);
 }
 
 performance.mark("end");
 performance.measure("Add function performance", "start", "end");
+
+// node --allow-natives-syntax  ex1.js
